@@ -32,12 +32,7 @@ class AuthJwtController extends Controller
     public function login()
     {
         //dd( auth('api'));
-        $credentials = request(['1', '1']);
-
-
-        $token = JWTAuth::fromUser($credentials);
-        echo $token;die;
-
+        $credentials = request(['email', 'password']);
         if (! $token = auth('api')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
